@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*Duomenis pasiimsime iš: https://magnetic-melon-yam.glitch.me  https://localhost:7282/WeatherForecast
+
+      https://localhost:7042/Accounts?name=Gediminas https://localhost:7042/Accounts?id=1
+
+      1 Naudojant tik JS, sukurkite lentelę ir į ją įrašykite duomenis (id, name, city, fav_color).
+      2 Naudojant JS metodus, padalinkite vardą į dvi dalis: vardą ir pavardę (lentelėje).
+      3 Pridėkite prie lentelės (tarp id ir name) nuotrauką.
+      4 Sukurkite checkbox virš lentelės su JS. Jį paspaudus, rodys tik tuos žmones, kurie yra VIP.
+      5 Sukurkite virš lentelės ir search laukelį (forma su input type search ir mygtukas). Suvedus duomenis, lentelėje turi prasifiltruoti pagal vardą arba pavardę (fullname contains search string). Capitalizacija turėtų būti nesvarbi. */
+      
+
+      fetch('https://localhost:7042/Accounts?id=3')
+        .then(Response => Response.json())
+        .then((data) => console.log(data));
+
+      
+    </script>
+  </body>
+</html>
