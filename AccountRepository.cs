@@ -33,21 +33,25 @@ namespace Person_Registration_System
             return _context.Accounts.SingleOrDefault(x => x.Id == id);
         }
 
-        public void Update(int id, string username, string password, string role)
+        public Account Update(int id, string username, string password, string role)
         {
-            var account = Get(id);
+            //var accountToUpdate = Get(id);
 
-            account.Username = username;
-            account.Password = password;
-            account.Role = role;    
+            var accountToUpdate = _context.Accounts.Single(x => x.Id == id);
 
+            accountToUpdate.Username = username;
+            accountToUpdate.Password = password;
+            accountToUpdate.Role = role;    
             _context.SaveChanges();
+
+            return accountToUpdate;
         }
 
         public Account Delete(int id)
         {
-            var accountToDetele = _context.Single(x => x.Id == id);
+            var accountToDetele = _context.Accounts.Single(x => x.Id == id);
             _context.Remove(accountToDetele);
+            _context.SaveChanges();
             return accountToDetele;
         }
     }

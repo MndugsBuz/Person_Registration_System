@@ -6,7 +6,7 @@ namespace Person_Registration_System
     {
         Account Add(Account account);
         Account Get(int id);
-        void Update(int id, string username, string password, string role);
+        Account Update(int id, string username, string password, string role);
         Account Delete(int id);
     }
 }

@@ -33,7 +33,7 @@ namespace Person_Registration_System.Controllers
         }
 
         [HttpDelete]
-        public void Delete([FromRoute] int id)
+        public void Delete(int id)
         {
             _accountRepository.Delete(id);
         }
