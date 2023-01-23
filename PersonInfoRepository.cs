@@ -1,6 +1,59 @@
-﻿namespace Person_Registration_System
+﻿using Person_Registration_System.Database;
+using Person_Registration_System.Database.Entities;
+
+namespace Person_Registration_System
 {
     public class PersonInfoRepository : IPersonInfoRepository
     {
+        private readonly ApplicationDbContext _context;
+
+        public PersonInfoRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public PersonInfo Add(PersonInfo personinfo)
+        {
+            var newPersonInfo = new PersonInfo
+            {
+                Name = personinfo.Name,
+                Surname = personinfo.Surname,
+                PersonalCode = personinfo.PersonalCode,
+                PhoneNumber = personinfo.PhoneNumber,
+                EmailAddress =  personinfo.EmailAddress,
+
+            };
+
+            _context.Persons.Add(newPersonInfo);
+            _context.SaveChanges();
+            return newPersonInfo;
+        }
+        public PersonInfo Get(int id)
+        {
+            return _context.Persons.SingleOrDefault(x => x.Id == id);
+        }
+
+        public PersonInfo Update(int id, string name, string surname, int personalcode, int phonenumber, string emailaddress)
+        {
+            var personinfoToUpdate = _context.Persons.Single(x => x.Id == id);
+
+            personinfoToUpdate.Name = name;
+            personinfoToUpdate.Surname = surname;
+            personinfoToUpdate.PersonalCode = personalcode;
+            personinfoToUpdate.PhoneNumber = phonenumber;
+            personinfoToUpdate.EmailAddress = emailaddress;
+            _context.SaveChanges();
+
+            return personinfoToUpdate;
+        }
+
+        public PersonInfo Delete(int id)
+        {
+            var personinfoToDetele = _context.Persons.Single(x => x.Id == id);
+            _context.Remove(personinfoToDetele);
+            _context.SaveChanges();
+            return personinfoToDetele;
+        }
+
     }
 }
