@@ -4,7 +4,7 @@ namespace Person_Registration_System
 {
     public interface IPersonInfoRepository
     {
-        PersonInfo Add(PersonInfo account);
+        PersonInfo Add(PersonInfo personInfo);
         PersonInfo Get(int id);
         PersonInfo Update(int id, string name, string surname, int personalCode, int phoneNumber, string emailAddress);
         PersonInfo Delete(int id);

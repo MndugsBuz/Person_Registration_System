@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Person_Registration_System.Database.Entities;
 
 namespace Person_Registration_System.Controllers
@@ -16,19 +17,21 @@ namespace Person_Registration_System.Controllers
         [HttpGet]
         public PersonInfo GetPersonInfo(int id)
         {
+
             return _personinfoRepository.Get(id);
         }
 
         [HttpPost]
-        public PersonInfo AddPersonInfo(int id, string name, string surname, int personalCode, int phoneNumber, string emailAddress)
+
+        public PersonInfo AddPersonInfo(int userId, string name, string surname, int personalCode, int phoneNumber, string emailAddress)
         {
-            return _personinfoRepository.Add(new PersonInfo() { Id = id, Name = name, Surname = surname, PersonalCode = personalCode, PhoneNumber = phoneNumber, EmailAddress = emailAddress});
+            return _personinfoRepository.Add(new PersonInfo() {UserId = userId, Name = name, Surname = surname, PersonalCode = personalCode, PhoneNumber = phoneNumber, EmailAddress = emailAddress});
         }
 
         [HttpPut]
-        public void UpdatePersonInfo(int id, string name, string surname, int personalCode, int phoneNumber, string emailAddress)
+        public void UpdatePersonInfo(int userId, string name, string surname, int personalCode, int phoneNumber, string emailAddress)
         {
-            _personinfoRepository.Update(id, name, surname, personalCode, phoneNumber, emailAddress);
+            _personinfoRepository.Update(userId, name, surname, personalCode, phoneNumber, emailAddress);
         }
 
         [HttpDelete]

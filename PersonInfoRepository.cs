@@ -16,6 +16,7 @@ namespace Person_Registration_System
         {
             var newPersonInfo = new PersonInfo
             {
+                UserId = personinfo.UserId,
                 Name = personinfo.Name,
                 Surname = personinfo.Surname,
                 PersonalCode = personinfo.PersonalCode,
@@ -24,19 +25,20 @@ namespace Person_Registration_System
 
             };
 
-            _context.Persons.Add(newPersonInfo);
+            _context.PersonsInfo.Add(newPersonInfo);
             _context.SaveChanges();
             return newPersonInfo;
         }
         public PersonInfo Get(int id)
         {
-            return _context.Persons.SingleOrDefault(x => x.Id == id);
+            return _context.PersonsInfo.SingleOrDefault(x => x.Id == id);
         }
 
         public PersonInfo Update(int id, string name, string surname, int personalcode, int phonenumber, string emailaddress)
         {
-            var personinfoToUpdate = _context.Persons.Single(x => x.Id == id);
+            var personinfoToUpdate = _context.PersonsInfo.Single(x => x.UserId == id);
 
+            personinfoToUpdate.UserId = id;
             personinfoToUpdate.Name = name;
             personinfoToUpdate.Surname = surname;
             personinfoToUpdate.PersonalCode = personalcode;
@@ -49,7 +51,7 @@ namespace Person_Registration_System
 
         public PersonInfo Delete(int id)
         {
-            var personinfoToDetele = _context.Persons.Single(x => x.Id == id);
+            var personinfoToDetele = _context.PersonsInfo.Single(x => x.Id == id);
             _context.Remove(personinfoToDetele);
             _context.SaveChanges();
             return personinfoToDetele;

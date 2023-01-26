@@ -1,12 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Person_Registration_System.Database.Entities;
 
 namespace Person_Registration_System.Controllers
 {
-    public class ResidenceAddressController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class ResidenceAddressController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IResidenceAddressRepository _residenceAddressRepository;
+        public ResidenceAddressController(IResidenceAddressRepository residenceAddressRepository)
         {
-            return View();
+            _residenceAddressRepository = residenceAddressRepository;
+        }
+
+        [HttpGet]
+        public Address GetResidenceAddress(int id)
+        {
+            return _residenceAddressRepository.Get(id);
+        }
+
+        [HttpPost]
+        public Address AddResidenceAddress(int id, string city, string street, string houseNumber, string flatNumber)
+        {
+            return _residenceAddressRepository.Add(new Address() { Id = id, City = city, Street = street, HouseNumber = houseNumber, FlatNumber = flatNumber});
+        }
+
+        [HttpPut]
+        public void UpdateResidenceAddress(int id, string city, string street, string houseNumber, string flatNumber)
+        {
+            _residenceAddressRepository.Update(id, city, street, houseNumber, flatNumber);
+        }
+
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            _residenceAddressRepository.Delete(id);
         }
     }
 }

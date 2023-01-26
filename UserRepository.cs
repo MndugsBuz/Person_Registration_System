@@ -3,18 +3,18 @@ using Person_Registration_System.Database.Entities;
 
 namespace Person_Registration_System
 {
-    public class AccountRepository : IAccountRepository
+    public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public AccountRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public Account Add(Account account)
+        public User Add(User account)
         {
-            var newAccount = new Account
+            var newUser = new User
             {
                 //Id = _context.Count == 0 ? 1 : _context.Max(x => x.Id) + 1,
                 //Id = account.Id + 1,
@@ -23,21 +23,21 @@ namespace Person_Registration_System
                 Role = account.Role
             };
            
-            _context.Accounts.Add(newAccount);
+            _context.Users.Add(newUser);
             _context.SaveChanges();
-            return newAccount;
+            return newUser;
         }
 
-        public Account Get(int id)
+        public User Get(int id)
         {
-            return _context.Accounts.SingleOrDefault(x => x.Id == id);
+            return _context.Users.SingleOrDefault(x => x.Id == id);
         }
 
-        public Account Update(int id, string username, string password, string role)
+        public User Update(int id, string username, string password, string role)
         {
             //var accountToUpdate = Get(id);
 
-            var accountToUpdate = _context.Accounts.Single(x => x.Id == id);
+            var accountToUpdate = _context.Users.Single(x => x.Id == id);
 
             accountToUpdate.Username = username;
             accountToUpdate.Password = password;
@@ -47,9 +47,9 @@ namespace Person_Registration_System
             return accountToUpdate;
         }
 
-        public Account Delete(int id)
+        public User Delete(int id)
         {
-            var accountToDetele = _context.Accounts.Single(x => x.Id == id);
+            var accountToDetele = _context.Users.Single(x => x.Id == id);
             _context.Remove(accountToDetele);
             _context.SaveChanges();
             return accountToDetele;

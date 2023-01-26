@@ -5,37 +5,37 @@ namespace Person_Registration_System.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AccountsController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly IAccountRepository _accountRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AccountsController(IAccountRepository accountRepository)
+        public UsersController(IUserRepository userRepository)
         {
-            _accountRepository = accountRepository;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
-        public Account GetAccount(int id)
+        public User GetUser(int id)
         {
-            return _accountRepository.Get(id);
+            return _userRepository.Get(id);
         }
 
         [HttpPost]
-        public Account AddAccount(int id, string username, string password, string role)
+        public User AddUser(string username, string password, string role)
         {
-            return _accountRepository.Add(new Account() { Id = id, Username = username, Password = password, Role = role });
+            return _userRepository.Add(new User() {Username = username, Password = password, Role = role });
         }
 
         [HttpPut]
-        public void UpdateAccount(int id, string username, string password, string role)
+        public void UpdateUser(int id, string username, string password, string role)
         {
-            _accountRepository.Update(id, username, password, role);
+            _userRepository.Update(id, username, password, role);
         }
 
         [HttpDelete]
         public void Delete(int id)
         {
-            _accountRepository.Delete(id);
+            _userRepository.Delete(id);
         }
     }
 }

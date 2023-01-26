@@ -11,7 +11,7 @@ namespace PersonRegistrationSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Accounts",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +22,11 @@ namespace PersonRegistrationSystem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonInfo",
+                name: "PersonsInfo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,21 +36,21 @@ namespace PersonRegistrationSystem.Migrations
                     PersonalCode = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonInfo", x => x.Id);
+                    table.PrimaryKey("PK_PersonsInfo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonInfo_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
+                        name: "FK_PersonsInfo_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ResidenceAddress",
+                name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -59,51 +59,42 @@ namespace PersonRegistrationSystem.Migrations
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FlatNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: true),
-                    PersonInfoId = table.Column<int>(type: "int", nullable: true)
+                    PersonInfoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResidenceAddress", x => x.Id);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ResidenceAddress_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_ResidenceAddress_PersonInfo_PersonInfoId",
+                        name: "FK_Addresses_PersonsInfo_PersonInfoId",
                         column: x => x.PersonInfoId,
-                        principalTable: "PersonInfo",
-                        principalColumn: "Id");
+                        principalTable: "PersonsInfo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonInfo_AccountId",
-                table: "PersonInfo",
-                column: "AccountId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ResidenceAddress_AccountId",
-                table: "ResidenceAddress",
-                column: "AccountId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ResidenceAddress_PersonInfoId",
-                table: "ResidenceAddress",
+                name: "IX_Addresses_PersonInfoId",
+                table: "Addresses",
                 column: "PersonInfoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonsInfo_UserId",
+                table: "PersonsInfo",
+                column: "UserId",
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ResidenceAddress");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "PersonInfo");
+                name: "PersonsInfo");
 
             migrationBuilder.DropTable(
-                name: "Accounts");
+                name: "Users");
         }
     }
 }
