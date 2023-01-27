@@ -18,7 +18,8 @@ namespace Person_Registration_System
         {
             var newAddress = new Address
             {
-                PersonInfoId = address.PersonInfoId,  
+                PersonInfoId = address.PersonInfoId, 
+                Id = address.Id,
                 City = address.City,
                 Street = address.Street,
                 HouseNumber = address.HouseNumber,

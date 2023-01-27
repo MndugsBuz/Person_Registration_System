@@ -22,7 +22,7 @@ namespace Person_Registration_System.Controllers
         [HttpPost]
         public Address AddResidenceAddress(int personInfoId, string city, string street, string houseNumber, string flatNumber)
         {
-            return _residenceAddressRepository.Add(new Address() { Id = personInfoId, City = city, Street = street, HouseNumber = houseNumber, FlatNumber = flatNumber});
+            return _residenceAddressRepository.Add(new Address() { PersonInfoId = personInfoId, City = city, Street = street, HouseNumber = houseNumber, FlatNumber = flatNumber});
         }
 
         [HttpPut]
