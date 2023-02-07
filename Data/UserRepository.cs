@@ -1,7 +1,8 @@
 ﻿using Person_Registration_System.Database;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
 
-namespace Person_Registration_System
+namespace Person_Registration_System.Data
 {
     public class UserRepository : IUserRepository
     {
@@ -22,7 +23,7 @@ namespace Person_Registration_System
                 Password = account.Password,
                 Role = account.Role
             };
-           
+
             _context.Users.Add(newUser);
             _context.SaveChanges();
             return newUser;
@@ -41,7 +42,7 @@ namespace Person_Registration_System
 
             accountToUpdate.Username = username;
             accountToUpdate.Password = password;
-            accountToUpdate.Role = role;    
+            accountToUpdate.Role = role;
             _context.SaveChanges();
 
             return accountToUpdate;

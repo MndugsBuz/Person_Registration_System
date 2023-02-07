@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Person_Registration_System;
+using Person_Registration_System.Data;
 using Person_Registration_System.Database;
+using Person_Registration_System.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

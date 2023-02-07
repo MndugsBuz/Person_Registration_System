@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
 
 namespace Person_Registration_System.Controllers
 {

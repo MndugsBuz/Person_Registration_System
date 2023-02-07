@@ -1,7 +1,8 @@
 ﻿using Person_Registration_System.Database;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
 
-namespace Person_Registration_System
+namespace Person_Registration_System.Data
 {
     public class PersonInfoRepository : IPersonInfoRepository
     {
@@ -21,7 +22,7 @@ namespace Person_Registration_System
                 Surname = personinfo.Surname,
                 PersonalCode = personinfo.PersonalCode,
                 PhoneNumber = personinfo.PhoneNumber,
-                EmailAddress =  personinfo.EmailAddress,
+                EmailAddress = personinfo.EmailAddress,
 
             };
 
@@ -34,7 +35,7 @@ namespace Person_Registration_System
             return _context.PersonsInfo.SingleOrDefault(x => x.Id == id);
         }
 
-        public PersonInfo Update(int id, string name, string surname, int personalcode, int phonenumber, string emailaddress)
+        public PersonInfo Update(int id, string name, string surname, long personalcode, long phonenumber, string emailaddress)
         {
             var personinfoToUpdate = _context.PersonsInfo.Single(x => x.UserId == id);
 

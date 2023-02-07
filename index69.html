@@ -7,7 +7,10 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
+
+    <h1> Person Registration System</h1>
+
+   <script>
       /*Duomenis pasiimsime iš: https://magnetic-melon-yam.glitch.me  https://localhost:7282/WeatherForecast
 
       https://localhost:7042/Accounts?name=Gediminas https://localhost:7042/Accounts?id=1
@@ -18,11 +21,23 @@
       4 Sukurkite checkbox virš lentelės su JS. Jį paspaudus, rodys tik tuos žmones, kurie yra VIP.
       5 Sukurkite virš lentelės ir search laukelį (forma su input type search ir mygtukas). Suvedus duomenis, lentelėje turi prasifiltruoti pagal vardą arba pavardę (fullname contains search string). Capitalizacija turėtų būti nesvarbi. */
       
-
+        
+      fetch('https://localhost:7042/Users?id=1')
+        .then(Response => Response.json())
+        .then((data) => console.log(data));
+    
+      fetch('https://localhost:7042/Users?id=2')
+        .then(Response => Response.json())
+        .then((data) => console.log(data));
+    
       fetch('https://localhost:7042/Users?id=3')
         .then(Response => Response.json())
         .then((data) => console.log(data));
 
+      fetch('https://localhost:7042/Users?id=4')
+        .then(Response => Response.json())
+        .then((data) => console.log(data));
+     
       
     </script>
   </body>

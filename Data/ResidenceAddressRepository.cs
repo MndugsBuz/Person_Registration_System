@@ -1,8 +1,9 @@
 ﻿using Person_Registration_System.Database;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
 using System.Globalization;
 
-namespace Person_Registration_System
+namespace Person_Registration_System.Data
 {
     public class ResidenceAddressRepository : IResidenceAddressRepository
     {
@@ -18,7 +19,7 @@ namespace Person_Registration_System
         {
             var newAddress = new Address
             {
-                PersonInfoId = address.PersonInfoId, 
+                PersonInfoId = address.PersonInfoId,
                 Id = address.Id,
                 City = address.City,
                 Street = address.Street,
