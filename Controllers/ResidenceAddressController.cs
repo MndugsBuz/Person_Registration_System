@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
 
 namespace Person_Registration_System.Controllers
 {
@@ -20,9 +21,9 @@ namespace Person_Registration_System.Controllers
         }
 
         [HttpPost]
-        public Address AddResidenceAddress(int id, string city, string street, string houseNumber, string flatNumber)
+        public Address AddResidenceAddress(int personInfoId, string city, string street, string houseNumber, string flatNumber)
         {
-            return _residenceAddressRepository.Add(new Address() { Id = id, City = city, Street = street, HouseNumber = houseNumber, FlatNumber = flatNumber});
+            return _residenceAddressRepository.Add(new Address() { PersonInfoId = personInfoId, City = city, Street = street, HouseNumber = houseNumber, FlatNumber = flatNumber});
         }
 
         [HttpPut]

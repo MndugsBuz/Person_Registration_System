@@ -1,7 +1,9 @@
 ﻿using Person_Registration_System.Database;
 using Person_Registration_System.Database.Entities;
+using Person_Registration_System.Interfaces;
+using System.Globalization;
 
-namespace Person_Registration_System
+namespace Person_Registration_System.Data
 {
     public class ResidenceAddressRepository : IResidenceAddressRepository
     {
@@ -13,20 +15,21 @@ namespace Person_Registration_System
             _context = context;
         }
 
-        public Address Add(Address residenceAddress)
+        public Address Add(Address address)
         {
-            var newResidenceAddress = new Address
+            var newAddress = new Address
             {
-               // Id = residenceAddress.Id,
-                City = residenceAddress.City,
-                Street = residenceAddress.Street,
-                HouseNumber = residenceAddress.HouseNumber,
-                FlatNumber = residenceAddress.FlatNumber,
+                PersonInfoId = address.PersonInfoId,
+                Id = address.Id,
+                City = address.City,
+                Street = address.Street,
+                HouseNumber = address.HouseNumber,
+                FlatNumber = address.FlatNumber,
             };
 
-            _context.Addresses.Add(newResidenceAddress);
+            _context.Addresses.Add(newAddress);
             _context.SaveChanges();
-            return newResidenceAddress;
+            return newAddress;
         }
         public Address Get(int id)
         {
@@ -35,15 +38,15 @@ namespace Person_Registration_System
 
         public Address Update(int id, string city, string street, string houseNumber, string flatNumber)
         {
-            var resicenceAddressToUpdate = _context.Addresses.Single(x => x.Id == id);
+            var addressToUpdate = _context.Addresses.Single(x => x.Id == id);
 
-            resicenceAddressToUpdate.City = city;
-            resicenceAddressToUpdate.Street = street;
-            resicenceAddressToUpdate.HouseNumber = houseNumber;
-            resicenceAddressToUpdate.FlatNumber = flatNumber;
+            addressToUpdate.City = city;
+            addressToUpdate.Street = street;
+            addressToUpdate.HouseNumber = houseNumber;
+            addressToUpdate.FlatNumber = flatNumber;
             _context.SaveChanges();
 
-            return resicenceAddressToUpdate;
+            return addressToUpdate;
         }
 
         public Address Delete(int id)

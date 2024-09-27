@@ -4,11 +4,12 @@ namespace Person_Registration_System.Database.Entities
 {
     public class PersonInfo
     {
+  
         public int Id { get; set; } 
         public string Name { get; set; }
         public string Surname { get; set; } 
-        public int PersonalCode { get; set; }
-        public int PhoneNumber { get; set; }    
+        public long PersonalCode { get; set; }
+        public long PhoneNumber { get; set; }    
         public string EmailAddress { get; set; }
 
         [ForeignKey("User")]

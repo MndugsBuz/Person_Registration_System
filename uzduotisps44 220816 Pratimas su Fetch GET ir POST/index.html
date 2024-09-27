@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="add.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Person registration system</title>
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <h1>Person registration system</h1>
+      </div>
+    </header>
+    <section class="form-container wrapper">
+         
+      <form id="add-property-form">
+        <label for="saleImage">User name</label>
+        <input
+          type="text"
+          id="saleImage"
+          name="image"
+          placeholder="Enter your user name"
+        />
+        <label for="salePrice">Password</label>
+        <input id="price" name="price" placeholder="Enter password" />
+              <!-- Generated list here -->
+        </select>
+        <button type="submit" class="addPropertyButton">Sign In</button>
+        <!-- <button id="add-property-button-container" type="submit" class="register" href="add.html">Register</button> -->
+        <div id="add-property-button-container">
+          <a class="add-property-button" href="register.html">
+            Register
+          </a>
+        </div>
+      </form>
+      <div id="statusMessages">
+        <!-- Display server messages -->
+      </div>
+    </section>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Person_Registration_System.Database.Entities;
 
-namespace Person_Registration_System
+namespace Person_Registration_System.Interfaces
 
 {
     public interface IResidenceAddressRepository

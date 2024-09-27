@@ -71,11 +71,11 @@ namespace PersonRegistrationSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonalCode")
-                        .HasColumnType("int");
+                    b.Property<long>("PersonalCode")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Surname")
                         .IsRequired()

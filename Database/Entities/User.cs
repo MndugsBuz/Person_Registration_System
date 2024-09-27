@@ -8,9 +8,8 @@
         public string Password { get; set; }    
 
         public string Role { get; set; }
-
-        public PersonInfo PersonInfo { get; set; }
-
+        public PersonInfo PersonInfo { get; set; }  
+              
         public User()
         {
 
